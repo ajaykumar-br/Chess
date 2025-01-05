@@ -30,6 +30,7 @@ class Game {
         // is it a valid move?
         try {
             this.board.move(move);
+            // *pushing move to moves array is pending which is why everytime control is going inside if only in line 70
         }
         catch (error) {
             console.error(error);
@@ -55,7 +56,6 @@ class Game {
         }
         // send updated board to both players
         if (this.moves.length % 2 === 0) {
-            console.log("sending move to player 2");
             this.player2.send(JSON.stringify({
                 type: messages_1.MOVE,
                 move,
@@ -63,7 +63,6 @@ class Game {
             }));
         }
         else {
-            console.log("sending move to player 1");
             this.player1.send(JSON.stringify({
                 type: messages_1.MOVE,
                 move,
