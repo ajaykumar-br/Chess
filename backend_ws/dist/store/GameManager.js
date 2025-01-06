@@ -18,6 +18,7 @@ class GameManager {
     addHandlers(socket) {
         socket.on("message", (data) => {
             const message = JSON.parse(data.toString());
+            console.log(message);
             if (message.type === messages_1.INIT_GAME) {
                 if (this.pendingUser) {
                     const game = new Game_1.Game(socket, this.pendingUser);
@@ -32,6 +33,7 @@ class GameManager {
                 const game = this.games.find((game) => game.player1 === socket || game.player2 === socket);
                 if (game) {
                     // check type of move using zod
+                    console.log(message.move, "is the move played");
                     if (types_1.moveType.safeParse(message.move).success) {
                         game.makeMove(socket, message.move);
                     }

@@ -6,7 +6,7 @@ export class Game {
   public player1: WebSocket;
   public player2: WebSocket;
   private board: Chess;
-  private moves: string[]; // "p - e2 to e4"
+  private moves: string[]; // "e2 - e4"
   private startTime: Date;
 
   constructor(player1: WebSocket, player2: WebSocket) {
@@ -38,6 +38,8 @@ export class Game {
     // is it a valid move?
     try {
         this.board.move(move);
+        this.moves.push(`${move.from + " - " + move.to}`);
+        console.log("move made", this.moves);
         // *pushing move to moves array is pending which is why everytime control is going inside if only in line 70
     } catch (error) {
         console.error(error);
@@ -68,17 +70,15 @@ export class Game {
     }
     // send updated board to both players
     if(this.moves.length % 2 === 0) {
-        this.player2.send(JSON.stringify({
+        this.player1.send(JSON.stringify({
             type: MOVE,
-            move,
-            board: this.board.fen()
+            move
         }));
     } else {
-        this.player1.send(
+        this.player2.send(
           JSON.stringify({
             type: MOVE,
-            move,
-            board: this.board.fen(),
+            move
           })
         );
     }

@@ -5,10 +5,10 @@ const Home = () => {
     const navigate = useNavigate();
   return (
     <div className="flex justify-center items-center h-screen">
-      <div className="">
-        <img src="images/showcase.png" alt="" />
+      <div className="h-[83%] w-[42%]">
+        <img src="chessboard.jpeg" alt="" />
       </div>
-      <div className="h-screen flex justify-center items-center w-[30%] mx-6">
+      <div className="h-[83%] flex justify-center items-center w-[30%] mx-6 bg-slate-800">
         <Button
           onClick={() => {
             navigate("game");
