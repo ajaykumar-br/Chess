@@ -9,6 +9,7 @@ const Game = () => {
     const [chess, setChess] = useState(new Chess());
     const [board, setBoard] = useState(chess.board());
     const [started, setStarted] = useState(false);
+    const [gameOver, setGameOver] = useState(false);
 
     useEffect(() => {
       if(!socket)
@@ -31,7 +32,7 @@ const Game = () => {
             console.log("Piece Moved");
             break;
           case "game_over":
-            alert("Game Over");
+            setGameOver(true);
             console.log("Game Over");
             break;
         }
@@ -43,6 +44,9 @@ const Game = () => {
   }
   return (
     <div className="flex justify-center items-center h-screen">
+      <div className="flex">
+        {gameOver && <h1>Game Over</h1>}
+      </div>
       <div className="">
         <Chessboard
           board={board}
