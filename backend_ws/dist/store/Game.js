@@ -45,13 +45,13 @@ class Game {
             this.player1.send(JSON.stringify({
                 type: messages_1.GAME_OVER,
                 payload: {
-                    winner: this.board.turn() === 'w' ? 'black' : 'white'
+                    winner: this.board.turn() === 'w' ? 'player2' : 'player1'
                 }
             }));
             this.player2.send(JSON.stringify({
                 type: messages_1.GAME_OVER,
                 payload: {
-                    winner: this.board.turn() === "w" ? "black" : "white",
+                    winner: this.board.turn() === "w" ? "player2" : "player1",
                 },
             }));
             return;

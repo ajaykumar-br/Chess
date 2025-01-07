@@ -53,7 +53,7 @@ export class Game {
       this.player1.send(JSON.stringify({
         type: GAME_OVER,
         payload: {
-            winner: this.board.turn() === 'w'? 'black': 'white'
+            winner: this.board.turn() === 'w'? 'player2': 'player1'
         }
       }));
 
@@ -61,7 +61,7 @@ export class Game {
         JSON.stringify({
           type: GAME_OVER,
           payload: {
-            winner: this.board.turn() === "w" ? "black" : "white",
+            winner: this.board.turn() === "w" ? "player2" : "player1",
           },
         })
       );

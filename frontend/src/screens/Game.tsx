@@ -33,6 +33,7 @@ const Game = () => {
             break;
           case "game_over":
             setGameOver(true);
+            console.log("hi",message.payload);
             console.log("Game Over");
             break;
         }
@@ -45,7 +46,7 @@ const Game = () => {
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="flex">
-        {gameOver && <h1>Game Over</h1>}
+        {gameOver && <h1></h1>}
       </div>
       <div className="">
         <Chessboard
